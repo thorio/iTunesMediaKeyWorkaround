@@ -14,21 +14,29 @@ namespace iTunesMediaKeyWorkaround
                 Environment.Exit(1);
             }
 
-            IiTunes iTunes = new iTunesApp();
+            var app = new iTunesApp();
 
-            switch (args[0].ToLower())
+			var p = app.SoundVolume;
+
+			switch (args[0].ToLower())
             {
                 case "playpause":
-                    iTunes.PlayPause();
+                    app.PlayPause();
                     break;
                 case "next":
-                    iTunes.NextTrack();
+                    app.NextTrack();
                     break;
                 case "prev:":
-                    iTunes.PreviousTrack();
+                    app.PreviousTrack();
                     break;
-            }
-
+				case "volup":
+					app.SoundVolume = Math.Min(100, app.SoundVolume + 5);
+					break;
+				case "voldown":
+					app.SoundVolume = Math.Max(0, app.SoundVolume - 5);
+					break;
+			}
+			
             Environment.Exit(0);
         }
     }
