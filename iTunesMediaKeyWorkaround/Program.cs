@@ -16,8 +16,6 @@ namespace iTunesMediaKeyWorkaround
 
             var app = new iTunesApp();
 
-			var p = app.SoundVolume;
-
 			switch (args[0].ToLower())
             {
                 case "playpause":
@@ -26,10 +24,13 @@ namespace iTunesMediaKeyWorkaround
                 case "next":
                     app.NextTrack();
                     break;
-                case "prev:":
+                case "prev":
                     app.PreviousTrack();
                     break;
-				case "volup":
+                case "stop":
+                    app.Stop();
+                    break;
+                case "volup":
 					app.SoundVolume = Math.Min(100, app.SoundVolume + 5);
 					break;
 				case "voldown":
